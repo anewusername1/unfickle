@@ -1,27 +1,30 @@
 module Unfickle
-  def Unfickle.add_item(key,value)
+  def add_item(key,value)
     @hash ||= {}
     @hash[key]=value
   end
 
-  def Unfickle.const_missing(key)
+  def const_missing(key)
     @hash[key]
   end
 
-  def Unfickle.each
+  def each
     @hash.each {|key,value| yield(key,value)}
   end
 
-  def Unfickle.values
+  def values
     @hash.values || []
   end
 
-  def Unfickle.keys
+  def keys
     @hash.keys || []
   end
 
-  def Unfickle.[](key)
+  def [](key)
     @hash[key]
   end
-end
 
+  def clear
+    @hash = {}
+  end
+end

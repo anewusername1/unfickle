@@ -2,7 +2,7 @@ require 'rubygems'
 require 'bundler'
 Bundler.setup :default, :test
 
-Rspec.configure do |c|
+RSpec.configure do |c|
   c.mock_with :rspec
 end
 
