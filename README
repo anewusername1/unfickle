@@ -1,6 +1,7 @@
 This allows for better constant management. Use it like so:
 class MyClass
   include Unfickle
+  extend Unfickle
 
   self.add_item(:SOMECONST, 1)
 end
