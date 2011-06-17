@@ -1,28 +1,15 @@
 module Unfickle
-  def add_item(key,value)
+  extend Forwardable
+  def set_const(key,value)
     @hash ||= {}
-    @hash[key]=value
+    @hash[key.upcase.to_sym]=value
   end
 
   def const_missing(key)
     @hash[key]
   end
 
-  def each
-    @hash.each {|key,value| yield(key,value)}
-  end
-
-  def values
-    @hash.values || []
-  end
-
-  def keys
-    @hash.keys || []
-  end
-
-  def [](key)
-    @hash[key]
-  end
+  def_delegators :@hash, :each, :values, :keys, :[]
 
   def clear
     @hash = {}
