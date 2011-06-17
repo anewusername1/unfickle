@@ -21,8 +21,16 @@ describe Unfickle do
   end
 
   describe '.const_missing' do
-    it 'just returns nil' do
-      subject.const_missing(:YEEHAH).should == nil
+    context 'constant really is missing' do
+      it 'just returns nil' do
+        subject.const_missing(:YEEHAH).should == nil
+      end
+    end
+
+    context 'we have something in the hash' do
+      it 'returns that something' do
+        subject.const_missing(:BLAH).should == 'value'
+      end
     end
   end
 
