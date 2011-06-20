@@ -8,7 +8,7 @@ describe Unfickle do
   end
 
   before(:each) do
-    subject.clear
+    subject.clear_constants
     subject.set_const(:BLAH, 'value')
   end
 
@@ -34,10 +34,37 @@ describe Unfickle do
     end
   end
 
-  describe 'clear' do
+  describe '.clear_constants' do
     it 'clears the constants' do
-      subject.clear
-      subject.keys.should == []
+      subject.clear_constants
+      subject.constant_keys.should == []
+    end
+  end
+
+  describe '.each_constant' do
+    it 'iterates over all constants' do
+      subject.each_constant do |key,value|
+        key.should == :BLAH
+        value.should == 'value'
+      end
+    end
+  end
+
+  describe '.constant_values' do
+    it 'gets all values for the constants' do
+      subject.constant_values.should == ['value']
+    end
+  end
+
+  describe '.constant_keys' do
+    it 'gets all keys for the constants' do
+      subject.constant_keys.should == [:BLAH]
+    end
+  end
+
+  describe '.get_const' do
+    it 'grabs a single constant' do
+      subject.get_const(:BLAH).should == 'value'
     end
   end
 

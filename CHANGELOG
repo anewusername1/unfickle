@@ -1,0 +1,7 @@
+v0.1.0
+ - iterate through the constants using the .each_constant method instead of
+   .each
+ - grab all constant values using .constant_values instead of .values
+ - grab all constant keys using .constant_keys instead of .keys
+ - clear method renamed to clear_contents
+ - deprecation messages for removed methods
