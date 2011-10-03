@@ -23,7 +23,7 @@ describe Unfickle do
   describe '.const_missing' do
     context 'constant really is missing' do
       it 'just returns nil' do
-        subject.const_missing(:YEEHAH).should == nil
+        expect { subject.const_missing(:YEEHAH)}.to raise_error NameError, 'uninitialized constant TestClass::YEEHAH'
       end
     end
 
@@ -65,6 +65,20 @@ describe Unfickle do
   describe '.get_const' do
     it 'grabs a single constant' do
       subject.get_const(:BLAH).should == 'value'
+    end
+  end
+
+  describe '.has_constant?' do
+    context 'it has' do
+      it 'returns true' do
+        subject.has_constant?(:BLAH).should == true
+      end
+    end
+
+    context 'it has not' do
+      it 'returns false' do
+        subject.has_constant?(:BLAM).should == false
+      end
     end
   end
 

@@ -1,13 +1,12 @@
 This allows for better constant management. Use it like so:
-class MyClass
-  set_const :read, 1
-  set_const :write, 2
-end
+  class MyClass
+    set_const :read, 1
+    set_const :write, 2
+  end
 
 You can then reference it directly like so:
 
-MyClass::READ
+  MyClass::READ
 
-Check out this blog post for a more detailed description: http://wellthatsruby.blogspot.com/2011/06/unfickle-new-constant-way.html
-
-Wiki to come soon
+Unfickle gives you the ability to traverse through your constants by calling 
+  MyClass.each_constant {|constant,constant_value| dosomething(constant, constant_value) }
